@@ -24,8 +24,8 @@ As this is a test sample for testing React components, I made use of the followi
 
 These dependencies are also specified in the `package.json` file. So, once you run `npm install` they will automatically get downloaded.
 
-## HelloWorld.test.ts is with changed extention to TSX (JSX templating enabled)
-The detault HelloWorld.test.ts that comes with the SPFx yo man generator is wtih changed extention to TSX so the JSX templating syntax is available. This is useful when we mount element with enzyme. Example: ```renderedElement = mount(<HelloWorld description={descTxt} />);```
+## HelloWorld.test.ts file extension change to TSX (JSX templating enabled)
+The file extension of the default `HelloWorld.test.ts`, which comes with the SPFx yeoman generator, is changed to TSX so that the JSX templating syntax is available. This change is necessary to mount components with enzyme. Example: `renderedElement = mount(<HelloWorld description={descTxt} />);`
 
 ## How to use it?
 
