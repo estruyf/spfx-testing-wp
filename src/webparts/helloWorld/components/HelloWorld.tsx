@@ -24,16 +24,15 @@ export default class HelloWorld extends React.Component<IHelloWorldProps, IHello
     }
 
     private _renderListAsync(): void {
-        // Local environment
-        if (Environment.type === EnvironmentType.Local) {
+        if (Environment.type == EnvironmentType.SharePoint || Environment.type == EnvironmentType.ClassicSharePoint) {
+            // Not implemented ...
+        } else {
+            // Local, other environment
             this._getMockListData().then((response) => {
                 this.setState({
                     results: response
                 });
             });
-        }
-        else if (Environment.type == EnvironmentType.SharePoint || Environment.type == EnvironmentType.ClassicSharePoint) {
-            // Not implemented ...
         }
     }
 
