@@ -48,11 +48,19 @@ describe('<HelloWorld />', () => {
         expect(componentDidMountSpy.calledOnce).to.equal(true);
     });
 
-    it('<HelloWorld /> should render an ul with 3 items (using the mock data)', () => {
-        // Wait for 2 seconds to check if your mock results are retrieved
+    it('<HelloWorld /> should render an ul with 3 items (using the mock data)', (done) => {
+        
+        // New instance should be created for this test due to setTimeout
+        // If the global renderedElement used, the result of "ul li"" will be 10 instead of 3
+        // because the state changes to 10 in the last test and 
+        // the last test is executed before this one bacause of setTimeout
+        let renderedElement1 = mount(<HelloWorld description={descTxt} />);
+
+        // Wait for 1 second to check if your mock results are retrieved
         setTimeout(() => {
-            expect(renderedElement.state('results')).to.not.be.null;
-            expect(renderedElement.find('ul li').length).to.be.equal(3);
+            expect(renderedElement1.state('results')).to.not.be.null;
+            expect(renderedElement1.find('ul li').length).to.be.equal(3);
+            done();  // done is required by mocha, otherwise the test will yield SUCCESS no matter of the expect cases
         }, 1000);
     });
 
