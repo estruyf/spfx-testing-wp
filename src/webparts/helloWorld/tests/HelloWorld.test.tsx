@@ -6,11 +6,11 @@ import { assert, expect } from 'chai';
 import { mount } from 'enzyme';
 import HelloWorld from '../components/HelloWorld';
 
-declare const sinon;
+declare const sinon: sinon.SinonStatic;
 
 describe('<HelloWorld />', () => {
     const descTxt = "TestingThisOneOut";
-    let componentDidMountSpy;
+    let componentDidMountSpy: sinon.SinonSpy;
     let renderedElement;
 
     before(() => {
