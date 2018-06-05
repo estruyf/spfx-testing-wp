@@ -2,9 +2,12 @@
 /// <reference types="sinon" />
 
 import * as React from 'react';
+import * as Adapter from 'enzyme-adapter-react-15';
 import { assert, expect } from 'chai';
-import { mount } from 'enzyme';
+import { configure, mount } from 'enzyme';
 import HelloWorld from '../components/HelloWorld';
+
+configure({ adapter: new Adapter() });
 
 declare const sinon;
 
@@ -49,15 +52,15 @@ describe('<HelloWorld />', () => {
     });
 
     it('<HelloWorld /> should render an ul with 3 items (using the mock data)', (done) => {
-        
         // New instance should be created for this test due to setTimeout
         // If the global renderedElement used, the result of "ul li"" will be 10 instead of 3
-        // because the state changes to 10 in the last test and 
+        // because the state changes to 10 in the last test and
         // the last test is executed before this one bacause of setTimeout
         let renderedElement1 = mount(<HelloWorld description={descTxt} />);
-
         // Wait for 1 second to check if your mock results are retrieved
         setTimeout(() => {
+            // Trigger state update
+            renderedElement1.update();
             expect(renderedElement1.state('results')).to.not.be.null;
             expect(renderedElement1.find('ul li').length).to.be.equal(3);
             done();  // done is required by mocha, otherwise the test will yield SUCCESS no matter of the expect cases

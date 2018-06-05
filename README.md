@@ -20,6 +20,8 @@ When you run the tests, the result should look like this:
 ## Extra dependencies
 As this is a test sample for testing React components, I made use of the following extra testing dependencies:
 - [enzyme]( http://airbnb.io/enzyme)
+- enzyme-adapter-react-15
+- react-test-renderer
 - react-addons-test-utils
 
 These dependencies are also specified in the `package.json` file. So, once you run `npm install` they will automatically get downloaded.
