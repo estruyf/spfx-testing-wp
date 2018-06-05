@@ -58,19 +58,15 @@ export default class HelloWorld extends React.Component<IHelloWorldProps, IHello
               </a>
 
               {
-                (() => {
-                  if (this.state.results !== null) {
-                    return (
-                      <ul>
-                        {
-                          this.state.results.value.map(item => {
-                            return <li key={item.Id}>{item.Title}</li>;
-                          })
-                        }
-                      </ul>
-                    );
-                  }
-                })()
+                this.state.results !== null && (
+                  <ul>
+                    {
+                      this.state.results.value.map(item => {
+                        return <li key={item.Id}>{item.Title}</li>;
+                      })
+                    }
+                  </ul>
+                )
               }
             </div>
           </div>
